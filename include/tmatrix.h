@@ -36,7 +36,7 @@ public:
     std::copy(arr, arr + sz, pMem);
   }
   TDynamicVector(const TDynamicVector& v)
-  {
+  {//fhdh
   }
   TDynamicVector(TDynamicVector&& v) noexcept
   {
