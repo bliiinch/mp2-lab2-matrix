@@ -26,12 +26,18 @@ TEST(TDynamicVector, can_create_copied_vector)
 
 TEST(TDynamicVector, copied_vector_is_equal_to_source_one)
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(10);
+    v[0] = 20;
+    TDynamicVector<int> v1(v);
+    EXPECT_EQ(20, v1[0]);
 }
 
 TEST(TDynamicVector, copied_vector_has_its_own_memory)
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(10);
+    TDynamicVector<int> v1(v);
+    v1[0] = 20;
+    EXPECT_EQ(20, v1[0]);
 }
 
 TEST(TDynamicVector, can_get_size)
