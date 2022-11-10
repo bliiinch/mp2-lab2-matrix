@@ -27,6 +27,8 @@ public:
   {
     if (sz == 0)
       throw out_of_range("Vector size should be greater than zero");
+    if (sz > MAX_VECTOR_SIZE)
+        throw - 1;
     pMem = new T[sz]();// {}; // У типа T д.б. констуктор по умолчанию
   }
 
@@ -180,7 +182,7 @@ public:
   {
       if (sz != v.sz)
           throw out_of_range("different size");
-      T res{};
+      T res = 0;
       for (int i = 0; i < sz; i++) {
           res += pMem[i] * v.pMem[i];
       }
@@ -219,11 +221,17 @@ class TDynamicMatrix : private TDynamicVector<TDynamicVector<T>>
 public:
   TDynamicMatrix(size_t s = 1) : TDynamicVector<TDynamicVector<T>>(s)
   {
+      if (s <= 0 || s > MAX_MATRIX_SIZE)
+          throw exception();
     for (size_t i = 0; i < sz; i++)
       pMem[i] = TDynamicVector<T>(sz);
   }
 
+  TDynamicMatrix(const TDynamicVector<TDynamicVector<T>>& V) : TDynamicVector<TDynamicVector<T>>(V) {}
+
   using TDynamicVector<TDynamicVector<T>>::operator[];
+  using TDynamicVector<TDynamicVector<T>>::size;
+  using TDynamicVector<TDynamicVector<T>>::at;
 
   // сравнение
   bool operator==(const TDynamicMatrix& m) const noexcept
