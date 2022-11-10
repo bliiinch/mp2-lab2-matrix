@@ -93,68 +93,118 @@ TEST(TDynamicVector, assign_operator_change_vector_size)//назначить оператор изм
     EXPECT_EQ(8, v.size());
 }
 
-TEST(TDynamicVector, can_assign_vectors_of_different_size)
+TEST(TDynamicVector, can_assign_vectors_of_different_size)//может назначать векторы разного размера
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(5);
+    v[0] = 4;
+    v1 = v;
+    EXPECT_EQ(v[0], v1[0]);
 }
 
-TEST(TDynamicVector, compare_equal_vectors_return_true)
+TEST(TDynamicVector, compare_equal_vectors_return_true)//сравнение равных векторов возвращает значение true
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(4);
+    //v[2] = 4;
+    //v1[2] = 4;
+    EXPECT_EQ(true, v == v1);
 }
 
-TEST(TDynamicVector, compare_vector_with_itself_return_true)
+TEST(TDynamicVector, compare_vector_with_itself_return_true)//сравните вектор с самим собой, верните true
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    EXPECT_EQ(true, v == v);
 }
 
-TEST(TDynamicVector, vectors_with_different_size_are_not_equal)
+TEST(TDynamicVector, vectors_with_different_size_are_not_equal)//векторы с разным размером не равны
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(5);
+    EXPECT_EQ(false, v == v1);
 }
 
-TEST(TDynamicVector, can_add_scalar_to_vector)
+TEST(TDynamicVector, can_add_scalar_to_vector)//можно добавить скаляр к вектору
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    v[2] = 4;
+    v[2] = v[2] + 10;
+    EXPECT_EQ(14, v[2]);
 }
 
-TEST(TDynamicVector, can_subtract_scalar_from_vector)
+TEST(TDynamicVector, can_subtract_scalar_from_vector)//может вычесть скаляр из вектора
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    v[2] = 10;
+    v[2] = v[2] - 4;
+    EXPECT_EQ(6, v[2]);
 }
 
-TEST(TDynamicVector, can_multiply_scalar_by_vector)
+TEST(TDynamicVector, can_multiply_scalar_by_vector)//может умножать скаляр на вектор
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    v[2] = 10;
+    v[2] = v[2] * 4;
+    EXPECT_EQ(40, v[2]);
 }
 
-TEST(TDynamicVector, can_add_vectors_with_equal_size)
+TEST(TDynamicVector, can_add_vectors_with_equal_size)//можно складывать векторы одинакового размера
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(4);
+    TDynamicVector<int> v3;
+    v[2] = 4;
+    v1[2] = 4;
+    v3 = v + v1;
+    EXPECT_EQ(8, v3[2]);
 }
 
-TEST(TDynamicVector, cant_add_vectors_with_not_equal_size)
+TEST(TDynamicVector, cant_add_vectors_with_not_equal_size)//не удается сложить векторы с неодинаковым размером
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(5);   
+    v[2] = 4;
+    v1[2] = 4;  
+    ASSERT_ANY_THROW(v + v1);
 }
 
-TEST(TDynamicVector, can_subtract_vectors_with_equal_size)
+TEST(TDynamicVector, can_subtract_vectors_with_equal_size)//может вычитать векторы одинакового размера
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(4);
+    TDynamicVector<int> v3;
+    v[2] = 4;
+    v1[2] = 4;
+    v3 = v - v1;
+    EXPECT_EQ(0, v3[2]);
 }
 
-TEST(TDynamicVector, cant_subtract_vectors_with_not_equal_size)
+TEST(TDynamicVector, cant_subtract_vectors_with_not_equal_size)//не удается вычесть векторы с неодинаковым размером
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(5);
+    v[2] = 4;
+    v1[2] = 4;
+    ASSERT_ANY_THROW(v1 - v);
 }
 
-TEST(TDynamicVector, can_multiply_vectors_with_equal_size)
+TEST(TDynamicVector, can_multiply_vectors_with_equal_size)//может умножать векторы одинакового размера
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(4);
+    int v3;
+    v[2] = 4;
+    v1[2] = 4;
+    v3 = v * v1;
+    EXPECT_EQ(16, v3);
 }
 
-TEST(TDynamicVector, cant_multiply_vectors_with_not_equal_size)
+TEST(TDynamicVector, cant_multiply_vectors_with_not_equal_size)//не удается умножить векторы с неодинаковым размером
 {
-  ADD_FAILURE();
+    TDynamicVector<int> v(4);
+    TDynamicVector<int> v1(5);
+    v[2] = 4;
+    v1[2] = 4;
+    ASSERT_ANY_THROW(v1 * v);
 }
 
